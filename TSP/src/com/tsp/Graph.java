@@ -3,7 +3,7 @@ package com.tsp;
 import java.util.ArrayList;
 
 public class Graph {
-	private int n; // number of nodes
+	private int n; // number of nodes or cities.
 	private int m; // number of arcs
 	private ArrayList<Node> node; // ArrayList *or* array of nodes
 	private boolean[][] A; // adjacency matrix
