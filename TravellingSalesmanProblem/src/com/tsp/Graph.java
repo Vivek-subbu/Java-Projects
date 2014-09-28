@@ -40,36 +40,35 @@ public final class Graph {
 	}
 
 	// Validating nodes
-	public final boolean addNode(Node paramc) {
-		Node localc = paramc;
+	public final boolean addNode(Node inputNode) {
 		int iflag = 0;
-		Object localObject = null;
+		Node iteratedNode = null;
 		Iterator<Node> localIterator = this.node.iterator();
 		while (localIterator.hasNext()) {
-			localObject = (Node) localIterator.next();
-			if (localc.getName().equalsIgnoreCase(
-					((Node) localObject).getName())) {
+			iteratedNode = localIterator.next();
+			if (inputNode.getName().equalsIgnoreCase(
+					iteratedNode.getName())) {
 				iflag = 1;
 				break;
 			}
-			if ((localc.getLon() == ((Node) localObject).getLon() && localc
-					.getLat() == ((Node) localObject).getLat())) {
+			if ((inputNode.getLon() == iteratedNode.getLon() && inputNode
+					.getLat() == iteratedNode.getLat())) {
 				iflag = 1;
 				break;
 			}
 		}
 
 		if (iflag == 0) {
-			this.node.add(paramc);
+			this.node.add(inputNode);
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public final boolean checkPath(int[] paramArrayOfInt) {
+	public final boolean checkPath(int[] arrayOfCities) {
 
-		if (paramArrayOfInt[0] != paramArrayOfInt[this.n]) {
+		if (arrayOfCities[0] != arrayOfCities[this.n]) {
 			System.out
 					.println("\nERROR: Start and end cities must be the same!\n");
 			return false;
@@ -78,7 +77,7 @@ public final class Graph {
 		do {
 			int j = i + 1;
 			do {
-				if (paramArrayOfInt[i] == paramArrayOfInt[j]) {
+				if (arrayOfCities[i] == arrayOfCities[j]) {
 					System.out
 							.println("\nERROR: Cities cannot be visited more than once!");
 					System.out.println("ERROR: Not all cities are visited!\n");
@@ -92,9 +91,9 @@ public final class Graph {
 		} while (i < this.n);
 		i = 0;
 		do {
-			if (!getArc(paramArrayOfInt[i], paramArrayOfInt[(i + 1)])) {
-				System.out.println("\nERROR: Arc " + (paramArrayOfInt[i] + 1)
-						+ "-" + (paramArrayOfInt[(i + 1)] + 1)
+			if (!getArc(arrayOfCities[i], arrayOfCities[(i + 1)])) {
+				System.out.println("\nERROR: Arc " + (arrayOfCities[i] + 1)
+						+ "-" + (arrayOfCities[(i + 1)] + 1)
 						+ " does not exist!\n");
 				return false;
 			}
