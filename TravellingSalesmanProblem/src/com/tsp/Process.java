@@ -190,8 +190,7 @@ public class Process {
 			}
 			System.out.println();
 			graph.removeArc(i - 1);
-			System.out.println((new StringBuilder("Arc ")).append(i)
-					.append(" removed!\n").toString());
+			System.out.println("Arc"+i+" removed!\n".toString());
 		} while (i != 0);
 	}
 
